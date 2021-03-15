@@ -1,17 +1,23 @@
 <template>
-  <div id="app">
-    <div class="branding-wrap">
-      <img alt="Devchain logo" src="./assets/logos/devch.png" />
+  <v-app>
+    <div id="app">
+      <div class="branding-wrap">
+        <img alt="Devchain logo" src="./assets/logos/devch.png"/>
+      </div>
+      <div class="quickbar">
+        Quickbar
+      </div>
+      <button class="v-btn v-btn--outlined" @click="clear">Clear console</button>
+      <!--    <utilities :subdomain="subdomain" :domain="domain"></utilities>-->
+
     </div>
-    <hr/>
-    <button @click="clear">Clear console</button>
-    <utilities :subdomain="subdomain" :domain="domain"></utilities>
-  </div>
+  </v-app>
 </template>
 
 <script>
 import axios from 'axios';
 import Utilities from "./components/Utilities";
+
 
 export default {
   name: 'App',
@@ -21,8 +27,7 @@ export default {
     }
     axios.defaults.withCredentials = true
   },
-  computed: {
-  },
+  computed: {},
   /* Just put them in the order from the import statement */
   components: {
     Utilities,
@@ -35,25 +40,8 @@ export default {
         clear() {
           console.clear()
         },
-
-        logout() {
-          let subdomain = this.subdomain;
-          let user = this.user;
-
-          axios.post('http://' + this.subdomain + '.' + this.domain + '/api/logout', {})
-              .then((res) => {
-                clog('Logout -> OK ');
-                clog(res);
-                user['user_' + subdomain] = null;
-              })
-              .catch((err) => {
-                    clog('Logout -> ERROR ');
-                    clog(err);
-                  }
-              );
-        },
       }
-      // https://vaccinare-covid.gov.ro/wp-content/themes/twentytwenty/assets/map/csv/centre_vaccinare_etapa_2.php?v=1615799656479
+  // https://vaccinare-covid.gov.ro/wp-content/themes/twentytwenty/assets/map/csv/centre_vaccinare_etapa_2.php?v=1615799656479
 }
 </script>
 
