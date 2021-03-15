@@ -9,7 +9,6 @@
       </div>
       <button class="v-btn v-btn--outlined" @click="clear">Clear console</button>
       <!--    <utilities :subdomain="subdomain" :domain="domain"></utilities>-->
-
     </div>
   </v-app>
 </template>
@@ -25,12 +24,12 @@ export default {
     window.clog = function (val) {
       console.log(val)
     }
-    axios.defaults.withCredentials = true
+    axios.defaults.withCredentials = false
   },
   computed: {},
   /* Just put them in the order from the import statement */
   components: {
-    Utilities,
+    Utilities
   },
   data() {
     return {};
@@ -41,7 +40,6 @@ export default {
           console.clear()
         },
       }
-  // https://vaccinare-covid.gov.ro/wp-content/themes/twentytwenty/assets/map/csv/centre_vaccinare_etapa_2.php?v=1615799656479
 }
 </script>
 
