@@ -1,25 +1,28 @@
 <template>
   <div :class="isDark ? 'dark' : ''">
-      <div class="flex flex-col h-full" v-if="siteEnabled">
-        <Header class="bg-accent-800" />
-        <!-- theme switcher -->
-        <div class="bg-dark-800 text-white dark:bg-accent-100 dark:text-gray-900 ">
-          <button
-            v-if="themeSwitcherEnabled"
-            @click="switchDarkMode"
-          >
-            Switch
-          </button>
-        </div>
-        <!-- actual page -->
-        <div class="h-screen">
-          <router-view />
-        </div>
-        <Footer />
+    <div
+      v-if="siteEnabled"
+      class="flex flex-col min-h-screen"
+    >
+      <Header class="bg-accent-800" />
+      <!-- theme switcher -->
+      <div class="bg-dark-800 text-white dark:bg-accent-100 dark:text-gray-900 ">
+        <button
+          v-if="themeSwitcherEnabled"
+          @click="switchDarkMode"
+        >
+          Switch
+        </button>
       </div>
-      <div v-else>
-        <SiteDisabled />
+      <!-- actual page -->
+      <div class="flex-grow bg-accent-100 text-gray-900 dark:bg-dark-800 dark:text-white">
+        <router-view />
       </div>
+      <Footer />
+    </div>
+    <div v-else>
+      <SiteDisabled />
+    </div>
   </div>
 </template>
 
@@ -53,7 +56,9 @@ export default {
 <style>
 
 body {
+    /* fallback for dark mode ////
     @apply bg-accent-100 text-gray-900 dark:bg-dark-800 dark:text-white;
+    */
     /*background-image: url("/static/cover.jpg");
     background-size: cover;
     background-position: center;*/

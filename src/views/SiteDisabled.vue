@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen flex flex-col align-middle  items-center text-center">
+  <div class=" flex flex-col align-middle  items-center text-center">
     <div class="flex-grow" />
     <div
       class="devchain-mask devChainAnimate2 h-40 center "

@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import SiteDisabled from '../views/SiteDisabled.vue'
+import HttpTester from '../views/Testers/HttpTester.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/ts/http',
+    name: 'Http',
+    component: HttpTester
   },
   {
     path: '/disabled',
