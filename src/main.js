@@ -1,21 +1,10 @@
-import Vue from 'vue'
-
-// vuetify
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
-
-Vue.use(Vuetify)
-
-
+import { createApp } from 'vue'
 import App from './App.vue'
-import axios from 'axios';
+import './registerServiceWorker.js'
+import router from './router'
+import store from './store'
+import './tailwind.css'
+import './assets/style.css'
+import './assets/animations.css'
 
-
-
-Vue.config.productionTip = false
-
-
-new Vue({
-  vuetify: new Vuetify(),
-  render: h => h(App),
-}).$mount('#app')
+createApp(App).use(store).use(router).mount('#app')

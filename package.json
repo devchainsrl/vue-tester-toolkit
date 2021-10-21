@@ -1,21 +1,35 @@
 {
-  "name": "vue-tester-toolkit",
-  "version": "0.1.0",
-  "private": true,
+  "name": "courier-frontend",
+  "version": "0.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "start": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "core-js": "^3.6.4",
-    "vue": "^2.6.11",
-    "vuetify": "^2.4.6"
+    "@headlessui/vue": "^1.4.1",
+    "@heroicons/vue": "^1.0.4",
+    "autoprefixer": "^10.3.4",
+    "postcss": "^8.3.6",
+    "postcss-loader": "^6.1.1",
+    "register-service-worker": "^1.7.2",
+    "tailwindcss": "^2.2.9",
+    "vue": "^3.2.6",
+    "vue-loader": "^15.9.8",
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
-    "vue-template-compiler": "^2.6.12"
+    "@vitejs/plugin-vue": "^1.6.0",
+    "@vue/compiler-sfc": "^3.2.6",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-config-xo": "^0.38.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-vue": "^7.17.0",
+    "vite": "^2.5.2"
   }
 }

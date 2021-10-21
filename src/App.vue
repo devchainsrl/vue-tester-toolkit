@@ -1,81 +1,69 @@
 <template>
-  <v-app>
-    <div id="app">
-      <div class="branding-wrap">
-        <img alt="Devchain logo" src="./assets/logos/devch.png"/>
+  <div :class="isDark ? 'dark' : ''">
+      <div class="flex flex-col h-full" v-if="siteEnabled">
+        <Header class="bg-accent-800" />
+        <!-- theme switcher -->
+        <div class="bg-dark-800 text-white dark:bg-accent-100 dark:text-gray-900 ">
+          <button
+            v-if="themeSwitcherEnabled"
+            @click="switchDarkMode"
+          >
+            Switch
+          </button>
+        </div>
+        <!-- actual page -->
+        <div class="h-screen">
+          <router-view />
+        </div>
+        <Footer />
       </div>
-      <div class="quickbar">
-        Quickbar
+      <div v-else>
+        <SiteDisabled />
       </div>
-      <button class="v-btn v-btn--outlined" @click="clear">Clear console</button>
-      <!--    <utilities :subdomain="subdomain" :domain="domain"></utilities>-->
-    </div>
-  </v-app>
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
-import Utilities from "./components/Utilities";
 
-
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+import SiteDisabled from './views/SiteDisabled.vue'
 export default {
-  name: 'App',
-  created() {
-    window.clog = function (val) {
-      console.log(val)
-    }
-    axios.defaults.withCredentials = false
-  },
-  computed: {},
-  /* Just put them in the order from the import statement */
   components: {
-    Utilities
+    Footer,
+    Header,
+    SiteDisabled
   },
-  data() {
-    return {};
+  data: function () {
+    return {
+      themeSwitcherEnabled: true,
+      siteEnabled: true,
+      isDark: false,
+      showHeader: true
+    }
   },
-  methods:
-      {
-        clear() {
-          console.clear()
-        },
-      }
+  methods: {
+    switchDarkMode () {
+      this.isDark = !this.isDark
+    }
+  }
 }
 </script>
 
 <style>
-body, html {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
 
+body {
+    @apply bg-accent-100 text-gray-900 dark:bg-dark-800 dark:text-white;
+    /*background-image: url("/static/cover.jpg");
+    background-size: cover;
+    background-position: center;*/
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  width: 100%;
-}
-
-.branding-wrap {
-  padding: 0;
-  display: block;
-  height: 150px;
-  background-color: rgb(0, 81, 84);
-}
-
-.branding-wrap > img {
-  height: 150px;
-}
-
-.test-suite {
-  align-content: center;
-  text-align: center;
-}
-
-button {
-  margin: 0.3rem;
+    font-family: "Raleway", sans-serif;
+    font-size: 1em;
+    /*color: white;*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
 }
 </style>
