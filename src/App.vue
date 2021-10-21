@@ -56,6 +56,7 @@ export default {
 <style>
 
 body {
+    @apply bg-accent-300
     /* fallback for dark mode ////
     @apply bg-accent-100 text-gray-900 dark:bg-dark-800 dark:text-white;
     */
