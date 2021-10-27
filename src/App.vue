@@ -15,7 +15,7 @@
         </button>
       </div>
       <!-- actual page -->
-      <div class="flex-grow bg-accent-100 text-gray-900 dark:bg-dark-800 dark:text-white">
+      <div class="flex-grow  bg-accent-100 text-gray-900 dark:bg-dark-800 dark:text-white">
         <router-view />
       </div>
       <Footer />

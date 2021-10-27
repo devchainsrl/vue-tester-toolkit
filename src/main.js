@@ -3,7 +3,7 @@ import App from './App.vue'
 import './registerServiceWorker.js'
 import router from './router'
 import store from './store'
-import './tailwind.css'
+import './assets/tailwind.css'
 import './assets/style.css'
 import './assets/animations.css'
 

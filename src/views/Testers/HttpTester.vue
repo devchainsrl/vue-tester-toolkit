@@ -1,26 +1,11 @@
 <template>
   <div class="p-4 center">
-    <input
-      v-model="url"
-      class="text-accent-900 py-1 px-2"
-    >
-
-    <span class="relative z-0 inline-flex shadow-sm rounded-md">
-      <button
-        class="btn"
-        @click="sendRequest(url, 'get')"
-      >
-        GET
-      </button>
-      <button
-        class="btn"
-        @click="sendRequest(url, 'post')"
-      >
-        POST
-      </button>
-    </span>
-
     <div>
+      <input
+        v-model="url"
+        class="text-accent-900 py-1 px-2"
+      >
+
       <span class="relative z-0 inline-flex shadow-sm rounded-md">
         <button
           class="btn"
@@ -36,18 +21,50 @@
 
         <button
           class="btn"
+          @click="url = ''"
+        >
+          Clear
+        </button>
+      </span>
+    </div>
+    <div>
+      <span class="relative z-0 inline-flex shadow-sm rounded-md">
+        <button
+          class="btn"
+          @click="sendRequest(url, 'get')"
+        >
+          GET
+        </button>
+        <button
+          class="btn"
+          @click="sendRequest(url, 'post')"
+        >
+          POST
+        </button>
+
+        <button
+          class="btn"
           @click="response = null"
         >
           Clear response post
         </button>
       </span>
-      <div class="w-64 center">
+    </div>
+    <div>
+      Headers
+    </div>
+
+    <!-- response -->
+    <div class="flex">
+      <div class="w-16" />
+      <div class="w-auto text-left">
         Response:
         <div v-if="response">
           <pre> {{ response.status }} </pre>
           <pre> {{ response.data }}</pre>
         </div>
       </div>
+      <div class="w-16" />
     </div>
   </div>
 </template>
@@ -66,6 +83,9 @@ export default {
   },
   data () {
     return {
+      headers: {
+
+      },
       url: '',
       response: null
     }
@@ -78,15 +98,20 @@ export default {
   },
   methods: {
     sendRequest (url, method) {
+      const client = axios.create({
+        headers: this.headers
+      })
       if (method === 'get') {
         this.response = null
-        axios.get(url).then((response) => {
+        client.get(url).then((response) => {
           this.response = response
+        }).catch((error) => {
+          this.response = { status: error }
         })
       }
       if (method === 'post') {
         this.response = null
-        axios.post(url).then((response) => {
+        client.post(url).then((response) => {
           this.response = response
         }).catch((error) => {
           this.response = { status: error }
