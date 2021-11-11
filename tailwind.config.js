@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: false, /* was [] */
-  darkMode: 'class', // 'media', // or 'media' or 'class'
+  darkMode: 'media', // 'media', // or 'media' or 'class'
   variants: {
     extend: {}
   },

@@ -1,5 +1,5 @@
 {
-  "name": "courier-frontend",
+  "name": "devchain-vue-tester-toolkit",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
